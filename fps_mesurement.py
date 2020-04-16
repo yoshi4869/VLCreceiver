@@ -3,11 +3,12 @@ import sys
 
 #OpenCVで再生（表示）されている動画のFPSを測定し、画像に描画して重畳表示する方法
 
-camera_id = 1
+camera_id = 1 # 0:PCカメラ, 1:USBカメラ
 delay = 1
 window_name = 'frame'
 
 cap = cv2.VideoCapture(camera_id)
+cap.set(cv2.CAP_PROP_FPS, 30) #30 fps設定はできた
 
 if not cap.isOpened():
     sys.exit()
@@ -18,10 +19,8 @@ tm.start()
 count = 0
 max_count = 10
 fps = 0
-
 while cap.isOpened():
     ret, frame = cap.read()
-
     if count == max_count:
         tm.stop()
         fps = max_count / tm.getTimeSec()#FPSはFrames Per Secondなので、「フレーム数」を「そのフレームを表示するのに掛かった時間（秒）」で割れば求められる
