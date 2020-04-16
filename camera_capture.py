@@ -30,4 +30,5 @@ def save_frame_camera_cycle(device_num, dir_path, basename, cycle, ext='jpg', de
 #OpenCVによって表示されるフレームをカウントしているためカメラのFPS設定ではなく表示される映像のFPSが基準となる。
 # 30FPS程度で表示されるのであればcycle=300とすると10秒おきに画像が保存される。
 #保存するフレームの周期を指定する変数cycleを小さい値にすると大量の画像が保存されてしまうので注意。
-save_frame_camera_cycle(1, 'data/temp', 'camera_capture_cycle', 30)
+# 今の環境では約8 fpsだったので１０秒おきに保存する場合は80
+save_frame_camera_cycle(1, 'data/temp', 'camera_capture_cycle', 80)
